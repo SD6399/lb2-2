@@ -1,12 +1,22 @@
 # Import pandas
+import os.path
 import pandas as pd
 import pylab
 # Assign spreadsheet filename to `file`
 from pandas.tests.groupby.test_value_counts import df
 from matplotlib import pyplot as plt
 
-path='D:\dk\python\covid_17.11.20.xlsx'
-xl = pd.read_excel(path)
+# path='D:\dk\python\covid_17.11.20.xlsx'
+path = input("Введите путь ")
+sh_nm = input("Введите название листа ")
+xl = pd.read_excel(path, sheet_name=sh_nm)
+err = 0
+
+while err != 1:
+    if (not os.path.exists(path)) and not (path == "[0-9][a-z].xlsx"):
+        print("Введите корректный путь")
+    else:
+        err = 1
 
 
 def data_about_table():
